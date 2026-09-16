@@ -26,10 +26,12 @@ public class LinkedList<T> {
   }
 
   public T get(int index) {
+    validateIndex(index);
     return node(index).value;
   }
 
   public void set(int index, T value) {
+    validateIndex(index);
     node(index).value = value;
   }
 
@@ -56,20 +58,21 @@ public class LinkedList<T> {
   }
 
   public T remove(int index) {
-    return removeNode(node(index));
+    validateIndex(index);
+    Node<T> target = node(index);
+    T removed = target.value;
+    unlink(target);
+    return removed;
   }
 
   // Returns false if value is not found.
   public boolean remove(T value) {
-    Node<T> current = head.next;
-    while (current != tail) {
-      if (Objects.equals(current.value, value)) {
-        removeNode(current);
-        return true;
-      }
-      current = current.next;
+    Node<T> target = node(value);
+    if (target == null) {
+      return false;
     }
-    return false;
+    unlink(target);
+    return true;
   }
 
   // Insert a new node holding value between two existing nodes.
@@ -83,22 +86,23 @@ public class LinkedList<T> {
     return node;
   }
 
-  // Unlink a node and return its value. With sentinels, target always has both
-  // a prev and a next, so there are no boundary branches.
-  private T removeNode(Node<T> target) {
-    T removed = target.value;
+  // Assumes index is in bounds.
+  private void validateIndex(int index) {
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException();
+    }
+  }
+
+  // Unlink a node. With sentinels, target always has both a prev and a next,
+  // so there are no boundary branches.
+  private void unlink(Node<T> target) {
     target.prev.next = target.next;
     target.next.prev = target.prev;
     size--;
-    return removed;
   }
 
   // Traverse to the node at a given index, from whichever end is nearer.
   private Node<T> node(int index) {
-    if (index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException();
-    }
-
     if (index < size / 2) {
       Node<T> current = head.next;
       for (int i = 0; i < index; i++) {
@@ -112,6 +116,18 @@ public class LinkedList<T> {
       }
       return current;
     }
+  }
+
+  // Returns the first node with the given value, or null if not found.
+  private Node<T> node(T value) {
+    Node<T> current = head.next;
+    while (current != tail) {
+      if (Objects.equals(current.value, value)) {
+        return current;
+      }
+      current = current.next;
+    }
+    return null;
   }
 
   private static class Node<T> {
