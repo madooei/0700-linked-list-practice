@@ -29,5 +29,5 @@ There is no build tool and no test suite: testing is introduced later in the cou
 
 ## What's here
 
-- `practice.LinkedList<T>` — the chapter's list rebuilt with two sentinel nodes. `head` and `tail` always point to sentinels; the first real node is `head.next`, the last is `tail.prev`, and the list is empty exactly when `head.next == tail`. Because every real node always has both a `prev` and a `next`, `add` (via `insertBetween`) and `remove` (via `removeNode`) have no boundary-case branches. The public operations are identical to the chapter's.
+- `practice.LinkedList<T>` — the chapter's list rebuilt with two sentinel nodes. `head` and `tail` always point to sentinels; the first real node is `head.next`, the last is `tail.prev`, and the list is empty exactly when `head.next == tail`. Because every real node always has both a `prev` and a `next`, `add` (via `insertBetween`) and `remove` (via `unlink`) have no boundary-case branches. The public operations are identical to the chapter's.
 - `practice.PracticeMain` — exercises the sentinel list, including removing at the head and the tail, which here needs no special case.

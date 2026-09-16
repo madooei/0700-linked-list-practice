@@ -66,15 +66,27 @@ public class LinkedList<T> {
     throw new UnsupportedOperationException("TODO: Implement me");
   }
 
-  // Unlink a node and return its value. With sentinels, target always has both
-  // a prev and a next, so there are no boundary branches.
-  private T removeNode(Node<T> target) {
+  // Assumes index is in bounds.
+  private void validateIndex(int index) {
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
+  }
+
+  // Unlink a node. With sentinels, target always has both a prev and a next,
+  // so there are no boundary branches.
+  private void unlink(Node<T> target) {
     // TODO: Implement me
     throw new UnsupportedOperationException("TODO: Implement me");
   }
 
   // Traverse to the node at a given index, from whichever end is nearer.
   private Node<T> node(int index) {
+    // TODO: Implement me
+    throw new UnsupportedOperationException("TODO: Implement me");
+  }
+
+  // Returns the first node with the given value, or null if not found.
+  private Node<T> node(T value) {
     // TODO: Implement me
     throw new UnsupportedOperationException("TODO: Implement me");
   }
