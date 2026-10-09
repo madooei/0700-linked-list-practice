@@ -1,9 +1,11 @@
 package practice;
 
 /** A demo of the sentinel-based LinkedList. */
-public final class PracticeMain {
+public final class LinkedListDemo {
 
-  private PracticeMain() {}
+  private LinkedListDemo() {
+    // This class should not be instantiated!
+  }
 
   public static void main(String[] args) {
     LinkedList<String> names = new LinkedList<>();
