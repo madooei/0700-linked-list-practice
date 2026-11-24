@@ -16,18 +16,19 @@ code/
     main/
       practice/
         LinkedList.java     # the sentinel-based list rebuilt from the chapter's LinkedList
-        LinkedListDemo.java # the practice demo
+      demo/
+        LinkedListDemo.java
   scripts/
-    run.sh                  # compile everything and run the practice demo
+    run.sh                  # compile everything and run one demo
 ```
 
 ## How to compile and run
 
-- `scripts/run.sh practice.LinkedListDemo` — compiles everything and runs the `LinkedListDemo` demo.
+- `scripts/run.sh demo.LinkedListDemo` — compiles everything and runs that one demo. Every class you implement has its own demo, `<Class>Demo`.
 
 There is no build tool and no test suite: testing is introduced later in the course. The script above is all you need.
 
 ## What's here
 
 - `practice.LinkedList<T>` — the chapter's list rebuilt with two sentinel nodes. `head` and `tail` always point to sentinels; the first real node is `head.next`, the last is `tail.prev`, and the list is empty exactly when `head.next == tail`. Because every real node always has both a `prev` and a `next`, `add` (via `insertBetween`) and `remove` (via `unlink`) have no boundary-case branches. The public operations are identical to the chapter's.
-- `practice.LinkedListDemo` — exercises the sentinel list, including removing at the head and the tail, which here needs no special case.
+- `demo.LinkedListDemo` — the demo of `LinkedList`; it exercises the sentinel list, including removing at the head and the tail, which here needs no special case.
